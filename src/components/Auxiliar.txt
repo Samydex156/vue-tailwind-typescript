@@ -1,0 +1,39 @@
+<script setup lang="ts">
+import { ref } from 'vue'; // 1. Importamos la reactividad
+
+// 2. Creamos una variable reactiva (booleana: verdadero o falso)
+// 'ref' significa que si este valor cambia, Vue actualizará la pantalla automáticamente.
+const estaActivo = ref(false);
+
+// 3. Función que cambia el valor de false a true y viceversa
+const alternarEstado = () => {
+  estaActivo.value = !estaActivo.value;
+}
+</script>
+
+<template>
+    <div class="bg-gray-200 p-8 rounded-xl shadow-md text-center">
+        
+        <h2 class="text-2xl font-bold mb-6 text-gray-700">
+            Laboratorio de Lógica y Estilos
+        </h2>
+
+        <div 
+            class="text-white p-10 rounded-lg shadow-xl cursor-pointer transition-all duration-500 transform mx-auto w-64"
+            :class="estaActivo ? 'bg-green-500 scale-110 rotate-3' : 'bg-blue-600 scale-100 rotate-0'"
+        >
+            <p class="text-xl font-bold">
+                {{ estaActivo ? '¡ESTOY ACTIVO!' : 'Estoy Inactivo' }}
+            </p>
+            <p class="text-sm mt-2 opacity-80">El estado es: {{ estaActivo }}</p>
+        </div>
+
+        <button 
+            @click="alternarEstado" 
+            class="mt-8 bg-slate-800 text-white py-2 px-6 rounded hover:bg-slate-700 active:scale-95 transition"
+        >
+            Cambiar Estado
+        </button>
+
+    </div>
+</template>
