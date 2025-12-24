@@ -8,4 +8,8 @@ export default defineConfig({
     vue(),
     tailwindcss(), // Agregamos el plugin aquí
   ],
+  server:{
+    host: true,
+    open: true,
+  }
 })
